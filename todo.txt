@@ -1,0 +1,2 @@
+1. fix shoot. (done)
+2. Add array of enemies.
