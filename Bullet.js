@@ -12,7 +12,8 @@ export default class Bullet {
   };
   update(ctx) {
     ctx.beginPath();
-    ctx.fillStyle = 'red';
+    // ctx.fillStyle = '#009797';
+    ctx.fillStyle = '#DE4700';
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     ctx.closePath();
     this.position.y -= this.speed;

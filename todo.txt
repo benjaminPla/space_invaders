@@ -1,2 +1,9 @@
-1. fix shoot. (done)
-2. Add array of enemies.
+1. Fix shoot. (done)
+2. Add array of enemies. (done)
+3. Clean code.
+4. Add statistics on game.stop (like accuracy, time (best-time)).
+5. Add enemy shoot.
+6. Add player upgrades.
+7. Add a nice background.
+8. CSS on html.
+9. Change sprites (maybe with white borders).
