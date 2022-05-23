@@ -58,7 +58,51 @@ function update() {
     });
     player.update(ctx);
     if (game.enemies.length > 0) {
-      game.enemies.map(enemy => enemy.update(ctx));
+      game.enemies.map(enemy => {
+        // collision player rigth
+        if (enemy.position.x + enemy.width >= player.position.x + player.width / 2
+          && enemy.position.y + enemy.height >= player.position.y
+          && enemy.direction === 'rigth') {
+            player.opacity = 0;
+            for (let i = 0; i < 10; i++) {
+              particles.push(new Particles(
+                5,
+                { x: (Math.random() - 0.5) * 3, y: (Math.random() - 0.5) * 3 },
+                { x: player.position.x + player.width / 2, y: player.position.y + player.height / 2 },
+                '#009797',
+                'random',
+                Math.random() * 50));
+              };
+            setTimeout(() => {
+                game.msg = 'You loose';
+                game.stop = true;
+            }, 1000);
+        // collision player left
+        } else if (enemy.position.x <= player.position.x + player.width / 2
+            && enemy.position.y + enemy.height >= player.position.y
+            && enemy.direction === 'left') {
+              player.opacity = 0;
+              for (let i = 0; i < 10; i++) {
+                particles.push(new Particles(
+                  5,
+                  { x: (Math.random() - 0.5) * 3, y: (Math.random() - 0.5) * 3 },
+                  { x: player.position.x + player.width / 2, y: player.position.y + player.height / 2 },
+                  '#009797',
+                  'random',
+                  Math.random() * 50));
+              };
+              setTimeout(() => {
+                  game.msg = 'You loose';
+                  game.stop = true;
+              }, 1000);
+        } else if (enemy.position.y >= game.height - enemy.height) {
+          setTimeout(() => {
+              game.msg = 'You loose';
+              game.stop = true;
+          }, 1000);
+        };
+        enemy.update(ctx);
+      });
     } else {
       setTimeout(() => {
         game.msg = 'You win!';
@@ -70,7 +114,6 @@ function update() {
         if (bullet.position.y <= 0) {
           game.bullets.splice(bulletIndex, 1);
         };
-        bullet.update(ctx);
         game.enemies.map((enemy, enemyIndex) => {
           if (bullet.position.y <= enemy.position.y + enemy.height) {
             if (bullet.position.x >= enemy.position.x && bullet.position.x + bullet.width <= enemy.position.x + enemy.width) {
@@ -88,6 +131,7 @@ function update() {
             };
           };
         });
+        bullet.update(ctx);
       });
     };
   } else {

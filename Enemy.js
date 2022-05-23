@@ -8,7 +8,7 @@ export default class Enemy {
       x: startPosition.x,
       y: startPosition.y,
     };
-    this.speed = 3;
+    this.speed = 10;
     this.movement = 0;
     this.direction = 'rigth';
     const image = new Image();
@@ -19,26 +19,6 @@ export default class Enemy {
   };
   update(ctx) {
     ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
-    // collision player left
-    if (this.position.x <= this.player.position.x + this.player.width / 2
-      && this.position.y + this.height >= this.player.position.y
-      && this.direction === 'left') {
-    };
-    // collision player rigth
-    if (this.position.x + this.width >= this.player.position.x + this.player.width / 2
-      && this.position.y + this.height >= this.player.position.y
-      && this.direction === 'rigth') {
-        setTimeout(() => {
-          this.game.msg = 'You loose';
-          this.game.stop = true;
-        }, 1000);
-    };
-    if (this.position.y >= this.game.height - this.height) {
-      setTimeout(() => {
-        this.game.msg = 'You loose';
-        this.game.stop = true;
-      }, 1000);
-    };
     if (this.position.x <= 0 && this.direction === 'left') {
       this.direction = 'rigth';
       this.position.y += this.height;

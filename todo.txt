@@ -4,6 +4,7 @@
 4. Add statistics on game.stop (like accuracy, time (best-time)).
 5. Add enemy shoot.
 6. Add player upgrades.
-7. Add a nice background.
+7. Add a nice background. (done)
 8. CSS on html.
-9. Change sprites (maybe with white borders).
+9. Change sprites (maybe with white borders). (done / can improve)
+10. Work on end game function (setTimeout, delete player, msgs, background continue, etc).

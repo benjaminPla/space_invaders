@@ -2,6 +2,7 @@ import Bullet from './Bullet.js';
 
 export default class Player {
   constructor(game) {
+    this.opacity = 1;
     this.game = game;
     this.width = 50;
     this.height = 50;
@@ -58,6 +59,9 @@ export default class Player {
     };
     if (this.position.x >= 0 && this.keys.left.pressed) this.position.x -= this.speed;
     if (this.position.x <= this.game.width - this.width && this.keys.rigth.pressed) this.position.x += this.speed;
+    ctx.save();
+    ctx.globalAlpha = this.opacity;
     ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+    ctx.restore();
   };
 };
