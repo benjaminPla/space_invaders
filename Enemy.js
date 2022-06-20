@@ -8,7 +8,7 @@ export default class Enemy {
       x: startPosition.x,
       y: startPosition.y,
     };
-    this.speed = 10;
+    this.speed = 4;
     this.movement = 0;
     this.direction = 'rigth';
     const image = new Image();
